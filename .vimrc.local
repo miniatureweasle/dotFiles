@@ -1,0 +1,18 @@
+set nofoldenable
+
+" Custom Keymaps
+
+" Easy smash escapse
+inoremap jj <Esc>
+
+" Easy buffer switching
+inoremap <Leader>bs <Esc>:b 
+nnoremap <Leader>bs <Esc>:b 
+
+inoremap <Leader>bl <Esc>:buffers<CR>
+nnoremap <Leader>bl <Esc>:buffers<CR>
+
+" Easy ctrlp
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
+colorscheme molokai
