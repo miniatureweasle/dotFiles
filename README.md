@@ -1,2 +1,2 @@
 # dotFiles
-My Custom Configrations
+My Custom Configrations vim , tumx
