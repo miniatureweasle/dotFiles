@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -92,27 +92,27 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+1 workspace 1: www
+bindsym $mod+2 workspace 2: vim
+bindsym $mod+3 workspace 3: Chrome
+bindsym $mod+4 workspace 4: Mail
+bindsym $mod+5 workspace 5: IDE
+bindsym $mod+6 workspace 6: Thunar
+bindsym $mod+7 workspace 7: Skype
+bindsym $mod+8 workspace 8: Firefox
+bindsym $mod+9 workspace 9: Media
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+1 move container to workspace 1: www
+bindsym $mod+Shift+2 move container to workspace 2: vim
+bindsym $mod+Shift+3 move container to workspace 3: Chrome
+bindsym $mod+Shift+4 move container to workspace 4: Mail
+bindsym $mod+Shift+5 move container to workspace 5: IDE
+bindsym $mod+Shift+6 move container to workspace 6: Thunar
+bindsym $mod+Shift+7 move container to workspace 7: Skype
+bindsym $mod+Shift+8 move container to workspace 8: Firefox
+bindsym $mod+Shift+9 move container to workspace 9: Media
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
@@ -181,12 +181,19 @@ client.focused_inactive #333333 #5F676A #ffffff #484e50
 client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
 
-# Start network manager
+new_window normal 0 px
+
+# Easy navigation between workspaces
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
+
+#assign [class = "Firefox"] 3: Browser
+#assign [class = "Atom"] 8 
+#assign [class = "Vlc"] 7: Media
+
+# Startup programs
 exec --no-startup-id nm-applet
 
-# ONLY FOR LAPTOPS
-# Start setup script for the system
-exec --no-startup-id ~/.setup
 
 # Volume control
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
@@ -197,6 +204,8 @@ bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86MonBrightnessDown exec xbacklight -steps 1 -time 0 -dec 5
 bindsym XF86MonBrightnessup exec xbacklight -steps 1 -time 0 -inc 5
 
+#Print Screen Settings
+bindsym Print exec gnome-screenshot --interactive
 # Show battery stats
 bindsym XF86Battery exec gnome-power-statistics
 
@@ -204,6 +213,16 @@ bindsym XF86Battery exec gnome-power-statistics
 exec --no-startup-id xinput disable 12
 
 # Setup wallpaper
-exec --no-startup-id feh -bg-scale $HOME/Pictures/Nerd_Superheroes.jpg
-
+#exec --no-startup-id feh -bg-scale $HOME/Pictures/no_humans_allowed_by_uvnik.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/Dark-pattern.jpg
 font xft:Monospace 12
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+
+# Lock system
+bindsym $mod+q exec "i3lock -t -i /home/upendra/Pictures/universe1.png"
